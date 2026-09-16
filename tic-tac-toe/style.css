@@ -1,0 +1,73 @@
+/* Tic-Tac-Toe page-specific styles. Builds on ../css/style.css */
+
+.mode-toggle {
+  display: flex;
+  background: var(--bg-card);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mode-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.mode-btn.active {
+  background: var(--gradient-main);
+  color: #12101c;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: min(360px, 90vw);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 8px;
+}
+
+.cell {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+  user-select: none;
+}
+
+.cell:hover:not(.filled):not(.locked) {
+  transform: translateY(-2px);
+  border-color: var(--accent-purple);
+  background: #2a2740;
+}
+
+.cell.filled {
+  cursor: default;
+}
+
+.cell.x-mark { color: var(--accent-pink); animation: popIn 0.25s var(--transition-med) both; }
+.cell.o-mark { color: var(--accent-cyan); animation: popIn 0.25s var(--transition-med) both; }
+
+.cell.win-cell {
+  animation: pulseGlow 1s ease-in-out infinite;
+  border-color: var(--accent-green);
+}
+
+.board.locked .cell {
+  cursor: default;
+}

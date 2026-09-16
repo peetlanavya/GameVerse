@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hangman — GAMEVERSE</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪢</text></svg>" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a class="back-btn" href="../index.html">⬅ Back to Gameverse</a>
+
+  <header class="site-header">
+    <h1 class="logo" style="font-size: clamp(1.4rem, 5vw, 2rem);">🎮 GAMEVERSE</h1>
+  </header>
+
+  <main class="page-shell">
+    <h2 class="game-title">🪢 Hangman</h2>
+
+    <div class="status-bar">
+      <div class="status-chip">
+        <span class="label">Wins</span>
+        <span class="value" id="scoreWins">0</span>
+      </div>
+      <div class="status-chip">
+        <span class="label">Guesses Left</span>
+        <span class="value guesses-left" id="guessesLeft">6</span>
+      </div>
+      <div class="status-chip">
+        <span class="label">Losses</span>
+        <span class="value" id="scoreLosses">0</span>
+      </div>
+    </div>
+
+    <div class="status-bar best-score-bar">
+      <div class="status-chip highlight">
+        <span class="label">Current Score</span>
+        <span class="value" id="currentScore">0</span>
+      </div>
+      <div class="status-chip highlight">
+        <span class="label">🏆 Highest Score</span>
+        <span class="value" id="highScore">0</span>
+      </div>
+    </div>
+
+    <div class="hangman-figure">
+      <svg viewBox="0 0 160 180">
+        <!-- gallows (always visible) -->
+        <line class="gallows" x1="10" y1="170" x2="90" y2="170" />
+        <line class="gallows" x1="35" y1="170" x2="35" y2="15" />
+        <line class="gallows" x1="35" y1="15" x2="110" y2="15" />
+        <line class="gallows" x1="110" y1="15" x2="110" y2="35" />
+        <!-- body parts, revealed one by one -->
+        <circle class="part" id="part-head" cx="110" cy="55" r="20" />
+        <line class="part" id="part-body" x1="110" y1="75" x2="110" y2="120" />
+        <line class="part" id="part-arm-left" x1="110" y1="90" x2="90" y2="105" />
+        <line class="part" id="part-arm-right" x1="110" y1="90" x2="130" y2="105" />
+        <line class="part" id="part-leg-left" x1="110" y1="120" x2="92" y2="150" />
+        <line class="part" id="part-leg-right" x1="110" y1="120" x2="128" y2="150" />
+      </svg>
+    </div>
+
+    <p class="category-tag" id="categoryTag">Category: —</p>
+    <div class="word-display" id="wordDisplay"></div>
+    <p class="message-banner info" id="message">Guess a letter to begin!</p>
+
+    <div class="keyboard" id="keyboard"></div>
+
+    <div class="controls-row">
+      <button class="btn" id="newWordBtn" type="button">🔀 New Word</button>
+      <button class="btn btn-secondary" id="resetScoreBtn" type="button">Reset Scores</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

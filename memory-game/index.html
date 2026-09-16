@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Memory Game — GAMEVERSE</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a class="back-btn" href="../index.html">⬅ Back to Gameverse</a>
+
+  <header class="site-header">
+    <h1 class="logo" style="font-size: clamp(1.4rem, 5vw, 2rem);">🎮 GAMEVERSE</h1>
+  </header>
+
+  <main class="page-shell">
+    <h2 class="game-title">🧠 Memory Game</h2>
+
+    <div class="difficulty-toggle" role="group" aria-label="Difficulty">
+      <button class="diff-btn active" id="diffEasy" type="button">4×3 (EASY)</button>
+      <button class="diff-btn" id="diffHard" type="button">4×4 (HARD)</button>
+    </div>
+
+    <div class="status-bar">
+      <div class="status-chip">
+        <span class="label">Moves</span>
+        <span class="value" id="moveCount">0</span>
+      </div>
+      <div class="status-chip">
+        <span class="label">Time</span>
+        <span class="value" id="timer">0:00</span>
+      </div>
+      <div class="status-chip">
+        <span class="label">Matches</span>
+        <span class="value" id="matchCount">0/6</span>
+      </div>
+    </div>
+
+    <div class="status-bar best-score-bar">
+      <div class="status-chip highlight">
+        <span class="label">Current Score</span>
+        <span class="value" id="currentScore">—</span>
+      </div>
+      <div class="status-chip highlight">
+        <span class="label">🏆 Highest Score</span>
+        <span class="value" id="highScore">—</span>
+      </div>
+    </div>
+
+    <p class="message-banner info" id="message">Flip two cards to find a match!</p>
+
+    <div class="memory-board grid-4x3" id="memoryBoard"></div>
+
+    <div class="controls-row">
+      <button class="btn" id="newGameBtn" type="button">🔀 New Game</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

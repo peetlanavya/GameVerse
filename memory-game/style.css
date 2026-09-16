@@ -1,0 +1,93 @@
+/* Memory Game page-specific styles. Builds on ../css/style.css */
+
+.difficulty-toggle {
+  display: flex;
+  background: var(--bg-card);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.diff-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 9px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.diff-btn.active {
+  background: var(--gradient-main);
+  color: #12101c;
+}
+
+.memory-board {
+  display: grid;
+  gap: 10px;
+  width: min(420px, 92vw);
+  margin: 0 auto 8px;
+  perspective: 800px;
+}
+
+.memory-board.grid-4x3 { grid-template-columns: repeat(4, 1fr); }
+.memory-board.grid-4x4 { grid-template-columns: repeat(4, 1fr); }
+
+.memory-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+.memory-card .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+
+.memory-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card .card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  backface-visibility: hidden;
+  font-size: clamp(1.4rem, 6vw, 2.1rem);
+}
+
+.memory-card .card-back {
+  background: var(--gradient-main);
+}
+
+.memory-card .card-back::after {
+  content: "❓";
+  opacity: 0.55;
+  font-size: clamp(1.2rem, 5vw, 1.7rem);
+}
+
+.memory-card .card-front {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: rotateY(180deg);
+}
+
+.memory-card.matched .card-front {
+  border-color: var(--accent-green);
+  animation: pulseGlow 0.9s ease-in-out 1;
+}
+
+.memory-card.shake .card-inner {
+  animation: shake 0.4s ease;
+}

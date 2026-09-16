@@ -1,0 +1,120 @@
+/* Hangman page-specific styles. Builds on ../css/style.css */
+
+.hangman-figure {
+  width: 200px;
+  height: 220px;
+  margin: 0 auto 10px;
+}
+
+.hangman-figure svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hangman-figure .part {
+  stroke: var(--accent-pink);
+  stroke-width: 6;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.hangman-figure .part.shown {
+  opacity: 1;
+  animation: popIn 0.3s var(--transition-med) both;
+}
+
+.hangman-figure .gallows {
+  stroke: var(--text-dim);
+  stroke-width: 6;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.category-tag {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.word-display {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: clamp(1.4rem, 6vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin: 10px 0 22px;
+  min-height: 2.6rem;
+}
+
+.word-display .letter-slot {
+  min-width: 0.9em;
+  border-bottom: 4px solid var(--accent-cyan);
+  text-align: center;
+  transition: color var(--transition-fast);
+}
+
+.word-display .letter-slot.revealed {
+  animation: popIn 0.25s var(--transition-med) both;
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+  gap: 8px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .keyboard {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+}
+
+.key-btn {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  padding: 10px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.key-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #2a2740;
+  border-color: var(--accent-purple);
+}
+
+.key-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  transform: none;
+}
+
+.key-btn.correct {
+  background: color-mix(in srgb, var(--accent-green) 25%, var(--bg-card));
+  border-color: var(--accent-green);
+}
+
+.key-btn.wrong {
+  background: color-mix(in srgb, var(--accent-red) 25%, var(--bg-card));
+  border-color: var(--accent-red);
+}
+
+.guesses-left.low {
+  color: var(--accent-red);
+  animation: shake 0.4s ease;
+}

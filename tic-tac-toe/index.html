@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tic-Tac-Toe — GAMEVERSE</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❌</text></svg>" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a class="back-btn" href="../index.html">⬅ Back to Gameverse</a>
+
+  <header class="site-header">
+    <h1 class="logo" style="font-size: clamp(1.4rem, 5vw, 2rem);">🎮 GAMEVERSE</h1>
+  </header>
+
+  <main class="page-shell">
+    <h2 class="game-title">❌ Tic-Tac-Toe</h2>
+
+    <div class="mode-toggle" role="group" aria-label="Game mode">
+      <button class="mode-btn active" id="mode2p" type="button">2 PLAYERS</button>
+      <button class="mode-btn" id="modeCpu" type="button">VS COMPUTER</button>
+    </div>
+
+    <div class="status-bar">
+      <div class="status-chip">
+        <span class="label">Player X</span>
+        <span class="value" id="scoreX">0</span>
+      </div>
+      <div class="status-chip">
+        <span class="label">Draws</span>
+        <span class="value" id="scoreDraw">0</span>
+      </div>
+      <div class="status-chip">
+        <span class="label" id="labelO">Player O</span>
+        <span class="value" id="scoreO">0</span>
+      </div>
+    </div>
+
+    <div class="status-bar best-score-bar">
+      <div class="status-chip highlight">
+        <span class="label">Current Score</span>
+        <span class="value" id="currentScore">0</span>
+      </div>
+      <div class="status-chip highlight">
+        <span class="label">🏆 Highest Score</span>
+        <span class="value" id="highScore">0</span>
+      </div>
+    </div>
+
+    <p class="message-banner info" id="message">Player X's turn</p>
+
+    <div class="board" id="board"></div>
+
+    <div class="controls-row">
+      <button class="btn" id="restartBtn" type="button">🔄 New Round</button>
+      <button class="btn btn-secondary" id="resetScoreBtn" type="button">Reset Scores</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

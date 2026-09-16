@@ -1,0 +1,151 @@
+/* =========================================================
+   GAMEVERSE — HOME PAGE ONLY STYLES
+   Builds on top of css/style.css
+   ========================================================= */
+
+.hub-shell {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Moderate, comfortable gap between the title/tagline and the intro text.
+   Scoped to the home page only — .site-header is shared across all pages. */
+.site-header {
+  margin-bottom: 26px;
+}
+
+.hub-intro {
+  text-align: center;
+  color: var(--text-dim);
+  max-width: 480px;
+  margin: 0 0 32px;
+  font-size: 1rem;
+  animation: fadeSlideUp 0.6s var(--transition-med) both;
+  animation-delay: 0.1s;
+}
+
+.game-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  justify-content: center;
+}
+
+/* When there's an odd one out (3rd card), center the last row nicely */
+.game-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game-card {
+  --card-accent: var(--accent-purple);
+  position: relative;
+  width: 260px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  padding: 32px 22px 26px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-main);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+  animation: popIn 0.5s var(--transition-med) both;
+}
+
+.game-card:nth-child(1) { animation-delay: 0.15s; }
+.game-card:nth-child(2) { animation-delay: 0.28s; }
+.game-card:nth-child(3) { animation-delay: 0.41s; }
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--card-accent) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity var(--transition-med);
+  pointer-events: none;
+}
+
+.game-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: var(--card-accent);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4), 0 0 30px color-mix(in srgb, var(--card-accent) 35%, transparent);
+}
+
+.game-card:hover::before {
+  opacity: 0.16;
+}
+
+.game-card:active {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.game-card .card-icon {
+  font-size: 3.2rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  transition: transform var(--transition-med);
+}
+
+.game-card:hover .card-icon {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+.game-card .card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 2px 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.game-card .card-desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.game-card .play-pill {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gradient-main);
+  color: #12101c;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+  position: relative;
+  z-index: 1;
+}
+
+.game-card:hover .play-pill {
+  transform: scale(1.06);
+  filter: brightness(1.1);
+}
+
+/* Per-card accent colors */
+.card-tictactoe { --card-accent: #f472b6; }
+.card-hangman    { --card-accent: #22d3ee; }
+.card-memory     { --card-accent: #4ade80; }
+
+@media (max-width: 480px) {
+  .game-card { width: 100%; max-width: 300px; }
+}

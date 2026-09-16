@@ -1,0 +1,284 @@
+/* =========================================================
+   GAMEVERSE — SHARED THEME
+   This file is used by the home page AND every game page,
+   so the whole site feels like one platform.
+   ========================================================= */
+
+:root {
+  /* Core palette */
+  --bg-dark: #0f0e17;
+  --bg-dark-2: #1a1826;
+  --bg-card: #211f33;
+  --accent-purple: #a78bfa;
+  --accent-pink: #f472b6;
+  --accent-cyan: #22d3ee;
+  --accent-green: #4ade80;
+  --accent-red: #f87171;
+  --accent-yellow: #fbbf24;
+  --text-main: #f4f4f8;
+  --text-dim: #a5a3b8;
+
+  /* Gradients */
+  --gradient-main: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #22d3ee 100%);
+  --gradient-bg: radial-gradient(circle at 20% 20%, #241f3d 0%, #0f0e17 60%);
+
+  /* Shape / motion */
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 40px rgba(167, 139, 250, 0.25);
+  --transition-fast: 0.18s ease;
+  --transition-med: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--gradient-bg);
+  background-attachment: fixed;
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 48px;
+}
+
+/* ---------- Site header (used on every page) ---------- */
+
+.site-header {
+  text-align: center;
+  margin-bottom: 8px;
+  animation: fadeSlideDown 0.6s var(--transition-med) both;
+}
+
+.site-header .logo {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 1px;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.site-header .tagline {
+  margin: 6px 0 0;
+  color: var(--text-dim);
+  font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---------- Back button (used on every game page) ---------- */
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  background: #2a2740;
+  box-shadow: var(--shadow-soft);
+}
+
+.back-btn:active {
+  transform: translateY(0);
+}
+
+/* ---------- Generic page shell used by game pages ---------- */
+
+.page-shell {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeSlideUp 0.5s var(--transition-med) both;
+}
+
+.game-title {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 800;
+  margin: 4px 0 18px;
+  text-align: center;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #12101c;
+  background: var(--gradient-main);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.08);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- Scoreboard / status strip (shared shape) ---------- */
+
+.status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.status-chip {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 10px 18px;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status-chip .label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+}
+
+/* Highlighted variant used for Current Score / Highest Score chips */
+.status-chip.highlight {
+  background: linear-gradient(160deg, rgba(167, 139, 250, 0.16), rgba(34, 211, 238, 0.10));
+  border: 1px solid rgba(167, 139, 250, 0.35);
+}
+
+.status-chip.highlight .value {
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.best-score-bar {
+  margin-top: -4px;
+}
+
+.status-chip.highlight.pulse {
+  animation: pulseGlow 0.8s ease-in-out 1;
+}
+
+.status-chip .value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+/* ---------- Message banner (win / lose / draw / info) ---------- */
+
+.message-banner {
+  min-height: 1.6em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 6px 0 18px;
+  transition: color var(--transition-fast);
+}
+
+.message-banner.win { color: var(--accent-green); }
+.message-banner.lose { color: var(--accent-red); }
+.message-banner.draw { color: var(--accent-yellow); }
+.message-banner.info { color: var(--text-dim); }
+
+/* ---------- Controls row ---------- */
+
+.controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* ---------- Shared animations ---------- */
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0.6); opacity: 0; }
+  70%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 rgba(167, 139, 250, 0); }
+  50%      { box-shadow: 0 0 24px rgba(167, 139, 250, 0.5); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+/* ---------- Responsive base ---------- */
+
+@media (max-width: 480px) {
+  body { padding: 16px 10px 36px; }
+  .btn { padding: 11px 22px; font-size: 0.95rem; }
+}
